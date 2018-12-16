@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+
+    <style>
+        *{margin:0;padding:0;}
+        #form{
+            background: aliceblue;
+            border: 3px solid lightsteelblue;
+            border-radius: 20px;
+            width: 700px;
+            height: 500px;
+            position: relative;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #form1{
+            margin-top: 80px;
+        }
+        input{
+            border-radius: 5px;
+            border:1px solid #b9bbbe;
+            height: 40px;
+            width: 220px;
+        }
+        input:focus{
+            border-radius: 5px;
+            border:3px solid #b8daff;
+        }
+        #btn{
+            color: white;
+            background-color: blue;
+        }
+        #btn:hover{
+            color: white;
+            background-color: darkblue;
+        }
+        #img{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="form">
+        <form th:action="@{/user/login}" method="post">
+            <div id="form1">
+                <img id="img" th:src="@{/images/login.jpeg}"  height="100" width="100"/>
+                <h2>请登录</h2>
+                <br>
+                <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                <br>
+                <input type="text" name="name" placeholder="用户名"/>
+                <br><br>
+                <input type="password" name="password" placeholder="密码"/>
+                <br><br>
+                <input id="btn" type="submit" value="登录"/>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

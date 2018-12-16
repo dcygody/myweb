@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加员工</title>
+    <style>
+        #formId{
+            background: aliceblue;
+            border: 3px solid lightsteelblue;
+            border-radius: 20px;
+            width: 600px;
+            height: 500px;
+            position: relative;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #form1{
+            margin-top: 100px;
+        }
+        .in{
+            border-radius: 5px;
+            border:1px solid #b9bbbe;
+            height: 40px;
+            width: 220px;
+        }
+        .in:focus{
+            border-radius: 5px;
+            border:3px solid #b8daff;
+        }
+        #btn{
+            color: white;
+            background-color: blue;
+            width: 180px;
+        }
+        #btn:hover{
+            color: white;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="formId">
+        <form th:action="@{/emp}" method="post">
+            <div id="form1">
+                <input type="hidden" name="id"/>
+                <div>
+                    姓名 <input type="text" class="in" name="lastName"  placeholder="zhangsan"/>
+                </div>
+                <br>
+                <div>
+                    邮箱 <input type="text" class="in" name="email" placeholder="zs@163.com" />
+                </div>
+                <br>
+                <div>
+                    <label>性别</label>
+                        <input type="radio" name="gender" value="1" checked="checked"/>
+                        <label>男</label>
+
+                        <input type="radio" name="gender" value="0"/>
+                        <label>女</label>
+                </div>
+                <br>
+                <div>
+                    部门
+                    <select name="did" class="in">
+                        <option th:value="${dept.getId()}" th:each="dept:${depts}" th:text="${dept.departmentName}">
+                        </option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    生日 <input class="in" type="text" name="birth" placeholder="1997-01-30" />
+                </div>
+                <br>
+                <input id="btn" class="in" type="submit" value="添加"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
